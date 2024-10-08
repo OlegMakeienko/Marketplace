@@ -1,9 +1,12 @@
-name: Unit test
+name: Java Main
 
 on:
   push:
-    branches: [ "main" ]
-
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -11,11 +14,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distribution: 'temurin'
-          cache: maven
+      - name: Build with Maven
+        run: mvn clean install -DskipTests
       - name: Run tests
-        run: mvn test -X
+        run: mvn test
