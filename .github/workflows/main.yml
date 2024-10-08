@@ -1,4 +1,4 @@
-name: Unit test
+name: Unit Test
 
 on:
   push:
@@ -11,11 +11,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+
+      - name: Clear Maven cache
+        run: mvn clean install -U
+
       - name: Run tests
-        run: mvn test
+        run: mvn clean test
+
+      - name: Show Maven effective POM
+        run: mvn help:effective-pom
