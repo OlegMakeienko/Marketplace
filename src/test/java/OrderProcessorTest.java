@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.DisplayName;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 class OrderProcessorTest {
 
     @Test
-    @DisplayName("Beräkna totalpris för en order med två produkter med hjälp av Mockito")
+    //@DisplayName("Beräkna totalpris för en order med två produkter med hjälp av Mockito")
     void totalPriceWithMockedProductRepository() {
         Order order = new Order();
         order.addProduct("1", 2);
